@@ -1,0 +1,5 @@
+{
+  "service": "demo",
+  "log_level": "INFO",
+  "retries": 3
+}
