@@ -1,0 +1,27 @@
+name: Basic CI demo
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check-and-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Check
+        run: python -m unittest -v
+      - name: Package
+        run: python -m zipfile -c package.zip app.py
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo-package
+          path: package.zip
+          retention-days: 1
