@@ -6,7 +6,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parent
 WORK = ROOT / 'output'
-PROJECT = ROOT.parents[1]
+PROJECT = ROOT
 
 def show(value):
     print(json.dumps(value, indent=2) if not isinstance(value, str) else value)
